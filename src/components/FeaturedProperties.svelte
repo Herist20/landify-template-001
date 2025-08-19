@@ -3,49 +3,53 @@
   export let content;
 </script>
 
-<section id="properties" class="section">
-  <div class="container">
-    <h2 class="section-title">{content.featuredProperties.title}</h2>
-    <p class="section-subtitle">{content.featuredProperties.subtitle}</p>
+<section id="properties" class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center text-gray-800 mb-2">{content.featuredProperties.title}</h2>
+    <p class="text-lg text-gray-600 text-center mb-12">{content.featuredProperties.subtitle}</p>
     
-    <div class="properties-grid">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {#each content.featuredProperties.properties as property}
-        <div class="property-card card">
-          <div class="property-image">
-            <img src={property.image} alt={property.title} />
-            <span class="property-badge" class:sale={property.type === 'For Sale'}>
+        <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
+          <div class="relative h-64 overflow-hidden">
+            <img src={property.image} alt={property.title} class="w-full h-full object-cover hover:scale-110 transition-transform duration-300" />
+            <span class="absolute top-4 left-4 px-3 py-1 text-white text-sm font-medium rounded-md {property.type === 'For Sale' ? 'bg-blue-600' : 'bg-green-600'}">
               {property.type}
             </span>
             {#if property.featured}
-              <span class="featured-badge">Featured</span>
+              <span class="absolute top-4 right-4 px-3 py-1 bg-amber-500 text-white text-sm font-medium rounded-md">
+                Featured
+              </span>
             {/if}
           </div>
           
-          <div class="property-content">
-            <h3 class="property-title">{property.title}</h3>
-            <div class="property-location">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">{property.title}</h3>
+            <div class="flex items-center gap-2 text-gray-600 text-sm mb-4">
               <MapPin size={16} />
               <span>{property.location}</span>
             </div>
             
-            <div class="property-features">
-              <div class="feature">
+            <div class="flex gap-6 py-4 border-t border-b border-gray-200 mb-4">
+              <div class="flex items-center gap-2 text-gray-600 text-sm">
                 <Bed size={18} />
                 <span>{property.beds} Beds</span>
               </div>
-              <div class="feature">
+              <div class="flex items-center gap-2 text-gray-600 text-sm">
                 <Bath size={18} />
                 <span>{property.baths} Baths</span>
               </div>
-              <div class="feature">
+              <div class="flex items-center gap-2 text-gray-600 text-sm">
                 <Maximize size={18} />
                 <span>{property.area}</span>
               </div>
             </div>
             
-            <div class="property-footer">
-              <div class="property-price">{property.price}</div>
-              <button class="btn-view">View Details</button>
+            <div class="flex justify-between items-center">
+              <div class="text-2xl font-bold text-blue-600">{property.price}</div>
+              <button class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-colors duration-300 font-medium">
+                View Details
+              </button>
             </div>
           </div>
         </div>
@@ -53,135 +57,3 @@
     </div>
   </div>
 </section>
-
-<style>
-  .properties-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2rem;
-  }
-  
-  .property-card {
-    transition: transform 0.3s ease;
-  }
-  
-  .property-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .property-image {
-    position: relative;
-    height: 250px;
-    overflow: hidden;
-  }
-  
-  .property-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-  
-  .property-card:hover .property-image img {
-    transform: scale(1.1);
-  }
-  
-  .property-badge {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    padding: 0.25rem 0.75rem;
-    background: var(--secondary-color);
-    color: white;
-    border-radius: var(--radius-sm);
-    font-size: 0.875rem;
-    font-weight: 500;
-  }
-  
-  .property-badge.sale {
-    background: var(--primary-color);
-  }
-  
-  .featured-badge {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    padding: 0.25rem 0.75rem;
-    background: #f59e0b;
-    color: white;
-    border-radius: var(--radius-sm);
-    font-size: 0.875rem;
-    font-weight: 500;
-  }
-  
-  .property-content {
-    padding: 1.5rem;
-  }
-  
-  .property-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
-  }
-  
-  .property-location {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-secondary);
-    font-size: 0.875rem;
-    margin-bottom: 1rem;
-  }
-  
-  .property-features {
-    display: flex;
-    gap: 1.5rem;
-    padding: 1rem 0;
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 1rem;
-  }
-  
-  .feature {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-secondary);
-    font-size: 0.875rem;
-  }
-  
-  .property-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .property-price {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-  }
-  
-  .btn-view {
-    padding: 0.5rem 1rem;
-    background: transparent;
-    color: var(--primary-color);
-    border: 1px solid var(--primary-color);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 500;
-  }
-  
-  .btn-view:hover {
-    background: var(--primary-color);
-    color: white;
-  }
-  
-  @media (max-width: 768px) {
-    .properties-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>

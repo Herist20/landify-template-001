@@ -12,83 +12,21 @@
   };
 </script>
 
-<section id="services" class="section bg-light">
-  <div class="container">
-    <h2 class="section-title">{content.services.title}</h2>
-    <p class="section-subtitle">{content.services.subtitle}</p>
+<section id="services" class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center text-gray-800 mb-2">{content.services.title}</h2>
+    <p class="text-lg text-gray-600 text-center mb-12">{content.services.subtitle}</p>
     
-    <div class="services-grid">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {#each content.services.items as service}
-        <div class="service-card">
-          <div class="service-icon">
+        <div class="bg-gray-50 p-8 rounded-xl text-center hover:-translate-y-1 hover:shadow-xl transition-all duration-300 border border-transparent hover:border-blue-600">
+          <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-300">
             <svelte:component this={iconMap[service.icon]} size={32} />
           </div>
-          <h3 class="service-title">{service.title}</h3>
-          <p class="service-description">{service.description}</p>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">{service.title}</h3>
+          <p class="text-gray-600 leading-relaxed">{service.description}</p>
         </div>
       {/each}
     </div>
   </div>
 </section>
-
-<style>
-  .bg-light {
-    background: var(--bg-light);
-  }
-  
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-  }
-  
-  .service-card {
-    background: white;
-    padding: 2rem;
-    border-radius: var(--radius-lg);
-    text-align: center;
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
-  }
-  
-  .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--primary-color);
-  }
-  
-  .service-icon {
-    width: 70px;
-    height: 70px;
-    margin: 0 auto 1.5rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    transition: transform 0.3s ease;
-  }
-  
-  .service-card:hover .service-icon {
-    transform: scale(1.1);
-  }
-  
-  .service-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-  }
-  
-  .service-description {
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-  
-  @media (max-width: 768px) {
-    .services-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
