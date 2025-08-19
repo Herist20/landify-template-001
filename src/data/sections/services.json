@@ -1,0 +1,36 @@
+{
+  "title": "Our Services",
+  "subtitle": "Comprehensive real estate solutions tailored to your needs",
+  "items": [
+    {
+      "icon": "Home",
+      "title": "Property Sales",
+      "description": "Expert guidance through the entire buying and selling process with market insights and negotiation expertise."
+    },
+    {
+      "icon": "Key",
+      "title": "Property Rentals",
+      "description": "Find the perfect rental property or tenant with our comprehensive rental management services."
+    },
+    {
+      "icon": "TrendingUp",
+      "title": "Investment Advisory",
+      "description": "Strategic investment consulting to maximize your real estate portfolio returns."
+    },
+    {
+      "icon": "FileText",
+      "title": "Property Management",
+      "description": "Full-service property management including maintenance, tenant relations, and financial reporting."
+    },
+    {
+      "icon": "Calculator",
+      "title": "Market Analysis",
+      "description": "In-depth market research and property valuation to make informed decisions."
+    },
+    {
+      "icon": "Users",
+      "title": "Consultation Services",
+      "description": "Personalized consultation to understand your needs and find the perfect property solution."
+    }
+  ]
+}

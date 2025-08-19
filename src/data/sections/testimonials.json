@@ -1,0 +1,27 @@
+{
+  "title": "What Our Clients Say",
+  "subtitle": "Real experiences from satisfied customers",
+  "items": [
+    {
+      "name": "Sarah Johnson",
+      "role": "Homeowner",
+      "content": "Prime Properties made my home buying experience seamless. Their team was professional, knowledgeable, and always available to answer my questions.",
+      "rating": 5,
+      "image": "https://i.pravatar.cc/150?img=1"
+    },
+    {
+      "name": "Michael Chen",
+      "role": "Property Investor",
+      "content": "I've worked with many real estate agencies, but Prime Properties stands out for their market insights and investment expertise. Highly recommended!",
+      "rating": 5,
+      "image": "https://i.pravatar.cc/150?img=3"
+    },
+    {
+      "name": "Emily Rodriguez",
+      "role": "Tenant",
+      "content": "Finding the perfect rental was so easy with Prime Properties. They understood my needs and found me an amazing apartment within my budget.",
+      "rating": 5,
+      "image": "https://i.pravatar.cc/150?img=5"
+    }
+  ]
+}

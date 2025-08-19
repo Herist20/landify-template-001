@@ -1,0 +1,16 @@
+{
+  "description": "Your trusted partner in finding the perfect property. We're committed to making your real estate journey smooth and successful.",
+  "quickLinks": [
+    { "label": "About Us", "href": "#about" },
+    { "label": "Properties", "href": "#properties" },
+    { "label": "Services", "href": "#services" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  "socialLinks": [
+    { "platform": "Facebook", "url": "https://facebook.com" },
+    { "platform": "Twitter", "url": "https://twitter.com" },
+    { "platform": "LinkedIn", "url": "https://linkedin.com" },
+    { "platform": "Instagram", "url": "https://instagram.com" }
+  ],
+  "copyright": "© 2024 Prime Properties. All rights reserved."
+}

@@ -1,0 +1,18 @@
+{
+  "title": "Find Your Perfect Property",
+  "subtitle": "Discover exceptional homes and investment opportunities with our expert real estate services",
+  "primaryButton": {
+    "text": "Browse Properties",
+    "href": "#properties"
+  },
+  "secondaryButton": {
+    "text": "Get Consultation",
+    "href": "#contact"
+  },
+  "stats": [
+    { "value": "500+", "label": "Properties Listed" },
+    { "value": "1000+", "label": "Happy Clients" },
+    { "value": "50+", "label": "Expert Agents" },
+    { "value": "15+", "label": "Years Experience" }
+  ]
+}

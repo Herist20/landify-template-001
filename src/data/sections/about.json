@@ -1,0 +1,24 @@
+{
+  "title": "Why Choose Prime Properties",
+  "subtitle": "Your trusted partner in real estate since 2008",
+  "description": "With over 15 years of experience in the real estate market, we've helped thousands of clients find their dream homes and make profitable investments. Our team of dedicated professionals combines local expertise with cutting-edge technology to deliver exceptional results.",
+  "features": [
+    {
+      "title": "Expert Team",
+      "description": "Certified professionals with deep market knowledge"
+    },
+    {
+      "title": "Best Deals",
+      "description": "Access to exclusive listings and competitive pricing"
+    },
+    {
+      "title": "24/7 Support",
+      "description": "Round-the-clock assistance for all your property needs"
+    },
+    {
+      "title": "Trusted by Thousands",
+      "description": "Over 1000+ satisfied clients and growing"
+    }
+  ],
+  "image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop"
+}

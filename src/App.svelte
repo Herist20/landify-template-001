@@ -7,7 +7,7 @@
   import Testimonials from './components/Testimonials.svelte';
   import Contact from './components/Contact.svelte';
   import Footer from './components/Footer.svelte';
-  import siteContent from './data/siteContent.json';
+  import siteContent from './data/siteContentModular.js';
   
   let content = siteContent;
 </script>
