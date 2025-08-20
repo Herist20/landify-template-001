@@ -17,44 +17,44 @@
   }
 </script>
 
-<section id="contact" class="py-16 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-4">
-    <h2 class="text-4xl font-bold text-center text-gray-800 mb-2">{content.contact.title}</h2>
-    <p class="text-lg text-gray-600 text-center mb-12">{content.contact.subtitle}</p>
+<section id="contact" class="contact-section">
+  <div class="contact-container">
+    <h2 class="section-title">{content.contact.title}</h2>
+    <p class="section-subtitle">{content.contact.subtitle}</p>
     
-    <div class="grid lg:grid-cols-2 gap-16">
-      <div>
-        <div class="flex gap-4 mb-8">
-          <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center text-white">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="info-item">
+          <div class="info-icon">
             <MapPin size={24} />
           </div>
-          <div>
-            <h4 class="text-lg font-semibold text-gray-800 mb-2">Visit Our Office</h4>
-            <p class="text-gray-600">{content.company.address}</p>
+          <div class="info-content">
+            <h4 class="info-title">Visit Our Office</h4>
+            <p class="info-text">{content.company.address}</p>
           </div>
         </div>
         
-        <div class="flex gap-4 mb-8">
-          <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center text-white">
+        <div class="info-item">
+          <div class="info-icon">
             <Phone size={24} />
           </div>
-          <div>
-            <h4 class="text-lg font-semibold text-gray-800 mb-2">Call Us</h4>
-            <p class="text-gray-600">{content.company.phone}</p>
+          <div class="info-content">
+            <h4 class="info-title">Call Us</h4>
+            <p class="info-text">{content.company.phone}</p>
           </div>
         </div>
         
-        <div class="flex gap-4 mb-8">
-          <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center text-white">
+        <div class="info-item">
+          <div class="info-icon">
             <Mail size={24} />
           </div>
-          <div>
-            <h4 class="text-lg font-semibold text-gray-800 mb-2">Email Us</h4>
-            <p class="text-gray-600">{content.company.email}</p>
+          <div class="info-content">
+            <h4 class="info-title">Email Us</h4>
+            <p class="info-text">{content.company.email}</p>
           </div>
         </div>
         
-        <div class="mt-8 rounded-xl overflow-hidden shadow-md">
+        <div class="map-container">
           <iframe 
             title="Office Location"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.25299748826!2d-74.11976389828391!3d40.69766374859258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1644262070741!5m2!1sen!2s"
@@ -67,46 +67,46 @@
         </div>
       </div>
       
-      <div class="bg-white p-10 rounded-xl shadow-lg">
-        <form on:submit={handleSubmit}>
-          <div class="mb-6">
+      <div class="contact-form-container">
+        <form on:submit={handleSubmit} class="contact-form">
+          <div class="form-group">
             <input 
               type="text" 
               placeholder={content.contact.form.namePlaceholder}
               bind:value={formData.name}
               required
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+              class="form-input"
             />
           </div>
           
-          <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="form-row">
             <input 
               type="email" 
               placeholder={content.contact.form.emailPlaceholder}
               bind:value={formData.email}
               required
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+              class="form-input"
             />
             
             <input 
               type="tel" 
               placeholder={content.contact.form.phonePlaceholder}
               bind:value={formData.phone}
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all"
+              class="form-input"
             />
           </div>
           
-          <div class="mb-6">
+          <div class="form-group">
             <textarea 
               placeholder={content.contact.form.messagePlaceholder}
               bind:value={formData.message}
               required
               rows="6"
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 transition-all resize-y"
+              class="form-textarea"
             ></textarea>
           </div>
           
-          <button type="submit" class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transform hover:-translate-y-0.5 transition-all duration-300 shadow-lg">
+          <button type="submit" class="submit-btn">
             <Send size={20} />
             {content.contact.form.submitButton}
           </button>
@@ -115,3 +115,154 @@
     </div>
   </div>
 </section>
+
+<style>
+  .contact-section {
+    padding: 4rem 0;
+    background-color: #f9fafb;
+  }
+
+  .contact-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .section-title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    text-align: center;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: #4b5563;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    gap: 4rem;
+  }
+
+  @media (min-width: 1024px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .info-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .info-icon {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+  .info-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+  }
+
+  .info-text {
+    color: #4b5563;
+  }
+
+  .map-container {
+    margin-top: 2rem;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .contact-form-container {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-row {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .form-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+
+  .form-textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    resize: vertical;
+    transition: all 0.2s ease;
+  }
+
+  .form-textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+
+  .submit-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #2563eb;
+    color: white;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .submit-btn:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+  }
+</style>
