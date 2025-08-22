@@ -3,36 +3,36 @@
   export let content;
 </script>
 
-<section id="home" class="hero-section">
+<section id="home" class="section hero-section">
   <div class="hero-overlay"></div>
-  <div class="hero-container">
+  <div class="container">
     <div class="hero-grid">
-      <div class="hero-content">
+      <div class="hero-content animate-slideInLeft">
         <h1 class="hero-title">{content.hero.title}</h1>
-        <p class="hero-subtitle">{content.hero.subtitle}</p>
+        <p class="hero-subtitle lead">{content.hero.subtitle}</p>
         
         <div class="hero-buttons">
-          <a href={content.hero.primaryButton.href} class="btn-primary">
+          <a href={content.hero.primaryButton.href} class="btn btn-primary btn-lg btn-icon">
             {content.hero.primaryButton.text}
             <ArrowRight size={20} />
           </a>
-          <a href={content.hero.secondaryButton.href} class="btn-secondary">
+          <a href={content.hero.secondaryButton.href} class="btn btn-outline btn-lg">
             {content.hero.secondaryButton.text}
           </a>
         </div>
         
-        <div class="hero-stats">
+        <div class="hero-stats card">
           {#each content.hero.stats as stat}
-            <div class="stat-item">
-              <div class="stat-value">{stat.value}</div>
-              <div class="stat-label">{stat.label}</div>
+            <div class="stat-item text-center">
+              <div class="stat-value text-primary">{stat.value}</div>
+              <div class="stat-label text-muted">{stat.label}</div>
             </div>
           {/each}
         </div>
       </div>
       
-      <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop" alt="Luxury Property" class="property-image" />
+      <div class="hero-image animate-slideInRight">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop" alt="Luxury Property" class="property-image rounded-xl shadow-2xl" />
       </div>
     </div>
   </div>
@@ -46,10 +46,17 @@
 
 <style>
   .hero-section {
-    padding: 5rem 0;
-    background: linear-gradient(135deg, #4f46e5 0%, #9333ea 50%, #ec4899 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 50%, #9333ea 100%);
     position: relative;
     overflow: hidden;
+    color: white;
+    padding: var(--space-4xl) 0 calc(var(--space-4xl) * 1.5) 0;
+  }
+
+  @media (min-width: 768px) {
+    .hero-section {
+      padding: calc(var(--space-4xl) * 1.5) 0 calc(var(--space-4xl) * 2) 0;
+    }
   }
 
   .hero-overlay {
@@ -58,111 +65,71 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-
-  .hero-container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    position: relative;
-    z-index: 10;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(30, 64, 175, 0.2) 100%);
+    backdrop-filter: blur(1px);
   }
 
   .hero-grid {
     display: grid;
-    gap: 4rem;
+    gap: var(--space-4xl);
     align-items: center;
+    position: relative;
+    z-index: 10;
   }
 
   @media (min-width: 1024px) {
     .hero-grid {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--space-3xl);
     }
   }
 
   .hero-content {
-    color: white;
+    position: relative;
+    z-index: 20;
   }
 
   .hero-title {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    line-height: 1.1;
-  }
-
-  @media (min-width: 1024px) {
-    .hero-title {
-      font-size: 3.75rem;
-    }
+    margin-bottom: var(--space-lg);
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   .hero-subtitle {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-    opacity: 0.95;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: var(--space-2xl);
+    max-width: 32rem;
   }
 
   .hero-buttons {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 3rem;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-3xl);
   }
 
   @media (min-width: 640px) {
     .hero-buttons {
       flex-direction: row;
+      gap: var(--space-xl);
     }
-  }
-
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background-color: white;
-    color: #4f46e5;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-  }
-
-  .btn-primary:hover {
-    background-color: #f3f4f6;
-    transform: translateY(-2px);
-  }
-
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.75rem 1.5rem;
-    border: 2px solid white;
-    color: white;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .btn-secondary:hover {
-    background-color: white;
-    color: #4f46e5;
   }
 
   .hero-stats {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    padding: 2rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-    border-radius: 0.75rem;
+    gap: var(--space-lg);
+    padding: var(--space-xl);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-xl);
+    transition: all var(--transition-base);
+  }
+
+  .hero-stats:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
   }
 
   @media (min-width: 768px) {
@@ -172,22 +139,28 @@
   }
 
   .stat-item {
-    text-align: center;
+    position: relative;
   }
 
   .stat-value {
-    font-size: 1.875rem;
-    font-weight: bold;
-    margin-bottom: 0.25rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 800;
+    margin-bottom: var(--space-xs);
+    color: white;
   }
 
   .stat-label {
     font-size: 0.875rem;
-    opacity: 0.9;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   .hero-image {
     display: none;
+    position: relative;
+    z-index: 10;
   }
 
   @media (min-width: 1024px) {
@@ -199,8 +172,11 @@
   .property-image {
     width: 100%;
     height: auto;
-    border-radius: 0.75rem;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transition: transform var(--transition-slow);
+  }
+
+  .property-image:hover {
+    transform: scale(1.02);
   }
 
   .hero-wave {
@@ -208,10 +184,12 @@
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 5;
   }
 
   .wave-svg {
     width: 100%;
     height: auto;
+    display: block;
   }
 </style>

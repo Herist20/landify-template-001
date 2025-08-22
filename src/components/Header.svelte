@@ -9,8 +9,8 @@
   }
 </script>
 
-<header class="header">
-  <div class="top-bar">
+<header class="header animate-fadeIn">
+  <div class="top-bar bg-secondary">
     <div class="container">
       <div class="contact-info">
         <a href="tel:{content.company.phone}" class="contact-link">
@@ -25,7 +25,7 @@
     </div>
   </div>
   
-  <nav class="navbar">
+  <nav class="navbar bg-primary">
     <div class="container">
       <div class="nav-content">
         <div class="logo">
@@ -44,7 +44,7 @@
           {/each}
         </ul>
         
-        <button class="mobile-menu-btn" on:click={toggleMobileMenu}>
+        <button class="mobile-menu-btn btn-ghost" on:click={toggleMobileMenu}>
           {#if mobileMenuOpen}
             <X size={24} />
           {:else}
@@ -56,16 +56,18 @@
   </nav>
   
   {#if mobileMenuOpen}
-    <div class="mobile-menu">
-      <ul>
-        {#each content.navigation as item}
-          <li>
-            <a href={item.href} class="nav-link" on:click={() => mobileMenuOpen = false}>
-              {item.label}
-            </a>
-          </li>
-        {/each}
-      </ul>
+    <div class="mobile-menu bg-primary animate-slideInLeft">
+      <div class="container">
+        <ul>
+          {#each content.navigation as item}
+            <li>
+              <a href={item.href} class="nav-link" on:click={() => mobileMenuOpen = false}>
+                {item.label}
+              </a>
+            </li>
+          {/each}
+        </ul>
+      </div>
     </div>
   {/if}
 </header>
@@ -75,15 +77,14 @@
     position: sticky;
     top: 0;
     z-index: 50;
-    background-color: white;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(12px);
   }
 
   .top-bar {
     display: none;
-    background-color: #f9fafb;
-    border-bottom: 1px solid #e5e7eb;
-    padding: 0.5rem 0;
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid var(--border-light);
   }
 
   @media (min-width: 768px) {
@@ -95,24 +96,28 @@
   .contact-info {
     display: flex;
     justify-content: flex-end;
-    gap: 2rem;
+    gap: var(--space-xl);
   }
 
   .contact-link {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    color: #6b7280;
+    gap: var(--space-xs);
+    color: var(--text-muted);
     font-size: 0.875rem;
-    transition: color 0.3s ease;
+    font-weight: 500;
+    transition: all var(--transition-base);
+    text-decoration: none;
   }
 
   .contact-link:hover {
-    color: #3b82f6;
+    color: var(--primary-color);
+    transform: translateY(-1px);
   }
 
   .navbar {
-    padding: 1rem 0;
+    padding: var(--space-lg) 0;
+    position: relative;
   }
 
   .nav-content {
@@ -122,18 +127,25 @@
   }
 
   .logo h1 {
-    color: #3b82f6;
-    font-size: 1.5rem;
-    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.75rem;
+    font-weight: 700;
     margin: 0;
+    letter-spacing: -0.01em;
+    transition: color var(--transition-base);
+  }
+
+  .logo a:hover h1 {
+    color: var(--primary-dark);
   }
 
   .nav-menu {
     display: none;
     list-style: none;
-    gap: 2rem;
+    gap: var(--space-xl);
     margin: 0;
     padding: 0;
+    align-items: center;
   }
 
   .desktop-menu {
@@ -147,22 +159,27 @@
   }
 
   .nav-link {
-    color: #1f2937;
-    font-weight: 500;
-    transition: color 0.3s ease;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+    position: relative;
   }
 
   .nav-link:hover {
-    color: #3b82f6;
+    color: var(--primary-color);
+    background-color: rgba(37, 99, 235, 0.08);
+    transform: translateY(-1px);
   }
 
   .mobile-menu-btn {
     display: block;
-    background: none;
-    border: none;
-    color: #1f2937;
-    cursor: pointer;
-    padding: 0.5rem;
+    color: var(--text-primary);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm);
   }
 
   @media (min-width: 768px) {
@@ -175,9 +192,11 @@
     position: fixed;
     left: 0;
     right: 0;
-    top: 60px;
-    background-color: white;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    top: calc(100% + 1px);
+    box-shadow: var(--shadow-xl);
+    backdrop-filter: blur(12px);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    border-top: 1px solid var(--border-light);
   }
 
   @media (min-width: 768px) {
@@ -188,16 +207,21 @@
 
   .mobile-menu ul {
     list-style: none;
-    padding: 2rem;
+    padding: var(--space-xl);
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
   }
 
   .mobile-menu li {
-    padding: 0.5rem 0;
+    padding: 0;
   }
 
   .mobile-menu .nav-link {
     display: block;
-    padding: 0.5rem 0;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
   }
 </style>

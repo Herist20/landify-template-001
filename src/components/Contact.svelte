@@ -17,20 +17,22 @@
   }
 </script>
 
-<section id="contact" class="contact-section">
-  <div class="contact-container">
-    <h2 class="section-title">{content.contact.title}</h2>
-    <p class="section-subtitle">{content.contact.subtitle}</p>
+<section id="contact" class="section bg-secondary">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{content.contact.title}</h2>
+      <p class="section-subtitle">{content.contact.subtitle}</p>
+    </div>
     
     <div class="contact-grid">
-      <div class="contact-info">
+      <div class="contact-info animate-slideInLeft">
         <div class="info-item">
           <div class="info-icon">
             <MapPin size={24} />
           </div>
           <div class="info-content">
             <h4 class="info-title">Visit Our Office</h4>
-            <p class="info-text">{content.company.address}</p>
+            <p class="info-text text-secondary">{content.company.address}</p>
           </div>
         </div>
         
@@ -40,7 +42,7 @@
           </div>
           <div class="info-content">
             <h4 class="info-title">Call Us</h4>
-            <p class="info-text">{content.company.phone}</p>
+            <p class="info-text text-secondary">{content.company.phone}</p>
           </div>
         </div>
         
@@ -50,11 +52,11 @@
           </div>
           <div class="info-content">
             <h4 class="info-title">Email Us</h4>
-            <p class="info-text">{content.company.email}</p>
+            <p class="info-text text-secondary">{content.company.email}</p>
           </div>
         </div>
         
-        <div class="map-container">
+        <div class="map-container rounded-xl shadow-lg">
           <iframe 
             title="Office Location"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.25299748826!2d-74.11976389828391!3d40.69766374859258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1644262070741!5m2!1sen!2s"
@@ -62,15 +64,18 @@
             height="250"
             style="border:0;"
             allowfullscreen=""
-            loading="lazy">
+            loading="lazy"
+            class="rounded-xl">
           </iframe>
         </div>
       </div>
       
-      <div class="contact-form-container">
+      <div class="contact-form-container card shadow-xl animate-slideInRight">
         <form on:submit={handleSubmit} class="contact-form">
           <div class="form-group">
+            <label for="name" class="form-label">Full Name</label>
             <input 
+              id="name"
               type="text" 
               placeholder={content.contact.form.namePlaceholder}
               bind:value={formData.name}
@@ -80,24 +85,34 @@
           </div>
           
           <div class="form-row">
-            <input 
-              type="email" 
-              placeholder={content.contact.form.emailPlaceholder}
-              bind:value={formData.email}
-              required
-              class="form-input"
-            />
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address</label>
+              <input 
+                id="email"
+                type="email" 
+                placeholder={content.contact.form.emailPlaceholder}
+                bind:value={formData.email}
+                required
+                class="form-input"
+              />
+            </div>
             
-            <input 
-              type="tel" 
-              placeholder={content.contact.form.phonePlaceholder}
-              bind:value={formData.phone}
-              class="form-input"
-            />
+            <div class="form-group">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input 
+                id="phone"
+                type="tel" 
+                placeholder={content.contact.form.phonePlaceholder}
+                bind:value={formData.phone}
+                class="form-input"
+              />
+            </div>
           </div>
           
           <div class="form-group">
+            <label for="message" class="form-label">Message</label>
             <textarea 
+              id="message"
               placeholder={content.contact.form.messagePlaceholder}
               bind:value={formData.message}
               required
@@ -106,7 +121,7 @@
             ></textarea>
           </div>
           
-          <button type="submit" class="submit-btn">
+          <button type="submit" class="btn btn-primary btn-lg btn-icon">
             <Send size={20} />
             {content.contact.form.submitButton}
           </button>
@@ -117,94 +132,113 @@
 </section>
 
 <style>
-  .contact-section {
-    padding: 4rem 0;
-    background-color: #f9fafb;
-  }
-
-  .contact-container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-
-  .section-title {
-    font-size: 2.25rem;
-    font-weight: bold;
-    text-align: center;
-    color: #1f2937;
-    margin-bottom: 0.5rem;
-  }
-
-  .section-subtitle {
-    font-size: 1.125rem;
-    color: #4b5563;
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-
   .contact-grid {
     display: grid;
-    gap: 4rem;
+    gap: var(--space-4xl);
+    align-items: start;
   }
 
   @media (min-width: 1024px) {
     .contact-grid {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: var(--space-3xl);
     }
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
   }
 
   .info-item {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: var(--space-lg);
+    padding: var(--space-xl);
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+    transition: all var(--transition-base);
+  }
+
+  .info-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
   }
 
   .info-icon {
     flex-shrink: 0;
-    width: 3rem;
-    height: 3rem;
-    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-    border-radius: 0.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    border-radius: var(--radius-lg);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+  }
+
+  .info-item:hover .info-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .info-content {
+    flex: 1;
   }
 
   .info-title {
     font-size: 1.125rem;
-    font-weight: 600;
-    color: #1f2937;
-    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
   }
 
   .info-text {
-    color: #4b5563;
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   .map-container {
-    margin-top: 2rem;
-    border-radius: 0.75rem;
+    margin-top: var(--space-xl);
     overflow: hidden;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all var(--transition-base);
+  }
+
+  .map-container:hover {
+    transform: scale(1.02);
   }
 
   .contact-form-container {
-    background-color: white;
-    padding: 2.5rem;
-    border-radius: 0.75rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    padding: var(--space-2xl);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-light);
+    position: relative;
+    overflow: hidden;
   }
 
-  .form-group {
-    margin-bottom: 1.5rem;
+  .contact-form-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  }
+
+  .contact-form {
+    position: relative;
+    z-index: 1;
   }
 
   .form-row {
     display: grid;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: var(--space-lg);
   }
 
   @media (min-width: 768px) {
@@ -213,56 +247,60 @@
     }
   }
 
-  .form-input {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1px solid #d1d5db;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    transition: all 0.2s ease;
+  .form-row .form-group {
+    margin-bottom: 0;
   }
 
-  .form-input:focus {
-    outline: none;
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-  }
-
-  .form-textarea {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1px solid #d1d5db;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    resize: vertical;
-    transition: all 0.2s ease;
-  }
-
+  /* Enhanced form styling */
+  .form-input:focus,
   .form-textarea:focus {
-    outline: none;
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-  }
-
-  .submit-btn {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #2563eb;
-    color: white;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-  }
-
-  .submit-btn:hover {
-    background-color: #1d4ed8;
     transform: translateY(-2px);
+    box-shadow: var(--shadow-lg), 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+
+  /* Submit button full width on mobile */
+  .contact-form .btn {
+    width: 100%;
+  }
+
+  @media (min-width: 640px) {
+    .contact-form .btn {
+      width: auto;
+      min-width: 12rem;
+    }
+  }
+
+  /* Animation delays */
+  .info-item:nth-child(1) { animation-delay: 0.1s; }
+  .info-item:nth-child(2) { animation-delay: 0.2s; }
+  .info-item:nth-child(3) { animation-delay: 0.3s; }
+  .map-container { animation-delay: 0.4s; }
+
+  /* Mobile responsive adjustments */
+  @media (max-width: 768px) {
+    .contact-form-container {
+      padding: var(--space-xl);
+    }
+
+    .info-item {
+      padding: var(--space-lg);
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .info-icon {
+      width: 3rem;
+      height: 3rem;
+      margin: 0 auto;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .form-row .form-group {
+      margin-bottom: var(--space-lg);
+    }
   }
 </style>
